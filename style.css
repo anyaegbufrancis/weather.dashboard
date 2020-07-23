@@ -16,17 +16,18 @@
 .main-row {
     border: solid 2px yellow;
     height: 90vh;
+    padding-bottom: 0px;
     
 }
 
 .col-left {
-    border: 2px dotted black;
-    background-color: #EAF2F5;
+    background-color: rgb(221, 217, 217);    
 }
 
 .col-right {
     border: 2px dotted black;
     padding-right: 0px;
+    padding-bottom: 0px;
 }
 
 #top-card {
@@ -88,7 +89,8 @@
     color: cornsilk;
 }
 
-.forecast-cards {
-    align-content: space-between;
+#forcast-card {
+    margin-bottom: 0px;
+    background-color: darkgray;
 }
 
