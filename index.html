@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="refresh" content="1000">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="scripts.js" defer></script>
+  <title>Weather Dashboard</title>
+</head>
+<!--HTML Body containing all elements-->
+
+<body class="dashboardBody">
+  <div class="jumbotron bg-dark text-white">
+    <h1 class="text-center" id="title">Weather Dashboard</h1>
+  </div>
+
+  <div class="container main-container">
+    <div class="row main-row">
+
+
+      <div class="col-3 col-left">
+        <form class="form-inline" id="search-area">
+          <h4 class="text-center">Search for a City:</h4>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search for a city" aria-label="Search"
+            id="left-search">
+          <button class="btn btn-outline-success my-2 my-sm-0 btn-lg" type="submit" id="left-search-button"><i
+              class="fa fa-search" aria-hidden="true"></i></button>
+        </form>
+        <div class="card" id="search-history">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" id="city-1">City1</li>
+            <li class="list-group-item" id="city-2">City2</li>
+            <li class="list-group-item" id="city-3">City3</li>
+            <li class="list-group-item" id="city-4">City4</li>
+            <li class="list-group-item" id="city-5">City5</li>
+            <li class="list-group-item" id="city-6">City6</li>
+            <li class="list-group-item" id="city-7">City7</li>
+            <li class="list-group-item" id="city-8">City8</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-9 col-right">
+        <div class="card" id="top-card">
+          <div class="card-body" id="top-card-body">
+            <h5 class="card-title" id="top-card-title">Special title treatment</h5>
+            <h5 class="card-title top-card-temp" id="top-card-subtext">Temperature: <span
+                class="top-card-temperature"></span></h5>
+            <h5 class="card-title top-card-temp" id="top-card-subtext">Humidity: <span class="top-card-humidity"></span>
+            </h5>
+            <h5 class="card-title top-card-temp" id="top-card-subtext">Windspeed: <span
+                class="top-card-windspeed"></span></h5>
+            <h5 class="card-title top-card-temp" id="top-card-subtext">UV Index: <span class="top-card-uv"></span></h5>
+          </div>
+        </div>
+
+        <h2 class="forecast">5-Day Forecast:</h2>
+
+        <div class="card-body" id="forecast-card-group">
+
+          <div class="card-group" id="forecast-cards">
+            <div class="card text-white bg-primary mb-3 rounded" id="forcast-card">
+              <div class="card-header" id="card-forecast-date-1">Header</div>
+              <div class="card-body" id="card-forecast-body-1">
+                <h5 class="card-title"><span class="icon-forcast-1"></span></h5>
+                <h5 class="card-title card-title-format" id="card-title-text">Temp: <span class="card-temp-1"></span>
+                </h5>
+                <h5 class="card-title card-title-format">Humidity: <span class="card-humidity-1"></span></h5>
+              </div>
+            </div>
+
+            <div class="card text-white bg-primary mb-3 rounded" id="forcast-card">
+              <div class="card-header" id="card-forecast-date-2">Header</div>
+              <div class="card-body" id="card-forecast-body-2">
+                <h5 class="card-title"><span class="icon-forcast-2"></span></h5>
+                <h5 class="card-title card-title-format" id="card-title-text">Temp: <span class="card-temp-2"></span>
+                </h5>
+                <h5 class="card-title card-title-format">Humidity: <span class="card-humidity-1"></span></h5>
+              </div>
+            </div>
+
+            <div class="card text-white bg-primary mb-3 rounded" id="forcast-card">
+              <div class="card-header" id="card-forecast-date-3">Header</div>
+              <div class="card-body" id="card-forecast-body-3">
+                <h5 class="card-title"><span class="icon-forcast-3"></span></h5>
+                <h5 class="card-title card-title-format" id="card-title-text">Temp: <span class="card-temp-3"></span>
+                </h5>
+                <h5 class="card-title card-title-format">Humidity: <span class="card-humidity-3"></span></h5>
+              </div>
+            </div>
+
+            <div class="card text-white bg-primary mb-3 rounded" id="forcast-card">
+              <div class="card-header" id="card-forecast-date-4">Header</div>
+              <div class="card-body" id="card-forecast-body-4">
+                <h5 class="card-title"><span class="icon-forcast-4"></span></h5>
+                <h5 class="card-title card-title-format" id="card-title-text">Temp: <span class="card-temp-4"></span>
+                </h5>
+                <h5 class="card-title card-title-format">Humidity: <span class="card-humidity-4"></span></h5>
+              </div>
+            </div>
+
+            <div class="card text-white bg-primary mb-3 rounded" id="forcast-card">
+              <div class="card-header" id="card-forecast-date-5">Header</div>
+              <div class="card-body" id="card-forecast-body-5">
+                <h5 class="card-title"><span class="icon-forcast-5"></span></h5>
+                <h5 class="card-title card-title-format" id="card-title-text">Temp: <span class="card-temp-5"></span>
+                </h5>
+                <h5 class="card-title card-title-format">Humidity: <span class="card-humidity-5"></span></h5>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>

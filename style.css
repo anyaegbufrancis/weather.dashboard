@@ -1,0 +1,90 @@
+.jumbotron {
+    padding: 0.3rem;
+    margin-bottom: 0px;
+}
+
+#title {
+    font-size: 55px;
+}
+
+.main-container {
+    border: solid 0px red;
+    max-width: 100%;
+    margin: 0px;
+}
+
+.main-row {
+    border: solid 2px yellow;
+    height: 90vh;
+    
+}
+
+.col-left {
+    border: 2px dotted black;
+    background-color: #EAF2F5;
+}
+
+.col-right {
+    border: 2px dotted black;
+    padding-right: 0px;
+}
+
+#top-card {
+    margin-right: 0px !important;
+    padding-right: 0px;
+    height: 50%;
+}
+.forecast{
+    margin-top: 1%;
+}
+#card-title-text {
+    margin-top: 50%;
+    margin-bottom: 16%;
+}
+
+#forcast-card {
+    margin-right: 4%;
+}
+.card-title-format {
+    font-size: 15px;
+}
+.card-body {
+    padding-left: 3px;
+}
+
+.top-card-temp {
+    margin-left: 30px;
+    margin-bottom: 15px;
+}
+
+#top-card-title {
+    margin-left: 30px;
+    font-size: 45px;
+    font-weight: bolder;
+    color: brown;
+}
+#forecast-card {
+    border-radius: 20px;
+}
+#left-search {
+    width: 80%;
+    height: 50px !important;
+    border-color: darkblue;
+}
+#left-search-button {
+    border-color: darkblue;
+    color: black;
+    height: 50px !important;
+    background-color: #4D77B8;
+}
+
+#search-history {
+    margin-top: 50px;
+}
+#search-area {
+    margin-top: 8px;
+}
+.fa-search {
+    color: cornsilk;
+}
+
