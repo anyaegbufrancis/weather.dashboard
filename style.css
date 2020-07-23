@@ -14,7 +14,6 @@
 }
 
 .main-row {
-    border: solid 2px yellow;
     height: 90vh;
     padding-bottom: 0px;
     
@@ -25,7 +24,6 @@
 }
 
 .col-right {
-    border: 2px dotted black;
     padding-right: 0px;
     padding-bottom: 0px;
 }
