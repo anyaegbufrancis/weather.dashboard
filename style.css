@@ -8,7 +8,6 @@
 }
 
 .main-container {
-    border: solid 0px red;
     max-width: 100%;
     margin: 0px;
 }
@@ -20,7 +19,7 @@
 }
 
 .col-left {
-    background-color: rgb(221, 217, 217);    
+    background-color: rgb(219, 217, 217);    
 }
 
 .col-right {

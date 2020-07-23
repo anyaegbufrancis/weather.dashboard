@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="refresh" content="1000">
-
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -49,12 +48,12 @@
           <div class="card-body" id="top-card-body">
             <h5 class="card-title" id="top-card-title">Special title treatment</h5>
             <h5 class="card-title top-card-temp" id="top-card-subtext">Temperature: <span
-                class="top-card-temperature"></span></h5>
-            <h5 class="card-title top-card-temp" id="top-card-subtext">Humidity: <span class="top-card-humidity"></span>
+                class="top-card-temperature" id="card-temp-0"></span></h5>
+            <h5 class="card-title top-card-temp" id="top-card-subtext">Humidity: <span class="top-card-humidity" id="card-humidity-0"></span>
             </h5>
             <h5 class="card-title top-card-temp" id="top-card-subtext">Windspeed: <span
-                class="top-card-windspeed"></span></h5>
-            <h5 class="card-title top-card-temp" id="top-card-subtext">UV Index: <span class="top-card-uv"></span></h5>
+                class="top-card-windspeed" id="card-windspeed-0"></span></h5>
+            <h5 class="card-title top-card-temp" id="top-card-subtext">UV Index: <span class="top-card-uv" id="card-uv-0"></span></h5>
           </div>
         </div>
 
@@ -118,6 +117,54 @@
       </div>
     </div>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    // This is our API key
+    var APIKey = "7ae0000de388b9c572a093a2d744bb68";
+    //Click function that triggers API call to open weather
+    console.log($('#left-search-button').click(function(e) {
+      //Stops defauls page refresh
+      e.preventDefault()
+      //Reads the present city
+      citySearch = ($('#left-search').val()) 
+      //Makes first API call
+      $.ajax({
+        'url' : "https://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + '&&appid='+ APIKey +'&cnt=6'       
+      }) .then (function(response) {
+        //Mine to city Name
+        console.log(response)
+        cityName = response.city.name
+        cityTemperature = ((response.list[0].main.temp- 273.15) * 1.80 + 32).toFixed(2)
+        cityHumidity = (response.list[0].main.humidity)
+        cityWindSpeed = (response.list[0].wind.speed)
+        cityWindDirection = (response.list[0].wind.deg)
+        cityLong = (response.city.coord.lat).toFixed(2)
+        cityLatt = (response.city.coord.lon).toFixed(2)
+        console.log(cityName)
+        console.log(cityLong)
+        console.log(cityLatt)
+        console.log($('#card-temp-'+'0').text(cityTemperature))
+        console.log($('#card-humidity-'+'0').text(cityHumidity))
+        console.log($('#card-windspeed-'+'0').text(cityWindSpeed))
+        console.log($('#card-uv-'+'0').text(cityUVIndex))
+        console.log('Temperature in '+cityName+' is '+cityTemperature)
+        console.log('Humidity in '+cityName+' is '+cityHumidity)
+        console.log('Wind Speed in '+cityName+' is '+ cityWindSpeed+'MPH at ' +cityWindDirection)
+        console.log(cityName + ' is on Longittude '+cityLong+' Lattitude '+cityLatt)
+        $.ajax({
+          'url' : 'http://api.openweathermap.org/data/2.5/uvi/forecast?appid='+ APIKey+'&lat='+cityLatt+'&lon='+cityLong+'&cnt=5'
+        }).then (function(response) {
+          cityUVIndex = response[0].value
+          console.log(response)
+          console.log('UV Index of '+cityName+' is '+ cityUVIndex)
+        })
+      })
+    }))
+   
+  </script>
+
+
 </body>
 
 </html>
