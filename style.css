@@ -13,9 +13,8 @@
 }
 
 .main-row {
-    height: 90vh;
-    padding-bottom: 0px;
-    
+    height: 87vh;
+    padding-bottom: 0px;    
 }
 
 .col-left {
@@ -25,6 +24,7 @@
 .col-right {
     padding-right: 0px;
     padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #top-card {
@@ -33,11 +33,8 @@
     height: 50%;
 }
 .forecast{
-    margin-top: 1%;
-}
-#card-title-text {
-    margin-top: 50%;
-    margin-bottom: 16%;
+    margin-top: 4%;
+    margin-bottom: 5%;
 }
 
 #forcast-card {
@@ -50,7 +47,7 @@
     padding-left: 3px;
 }
 
-.top-card-temp {
+.card-text {
     margin-left: 30px;
     margin-bottom: 15px;
 }
@@ -60,10 +57,7 @@
     font-size: 45px;
     font-weight: bolder;
 }
-#forecast-card {
-    border-radius: 20px;
-    width: 20%;
-}
+
 #left-search {
     width: 80%;
     height: 50px !important;
@@ -86,8 +80,30 @@
     color: cornsilk;
 }
 
-#forcast-card {
-    margin-bottom: 0px;
-    background-color: darkgray;
+/*--Bottom card styling --*/
+#bottom-card-text {
+    padding-left: 4px !important;
+    text-align: left !important;
+    font-size: 12px;
+}
+#weather-icon {
+    margin-bottom: 50px !important;
+    padding-bottom: 50px !important;
+}
+.temp {
+    margin-top: 15px;
+}
+#card-forecast-date-1 {
+    font-weight: bolder;
+    text-align: center;
+}
+div.card-deck,
+#card-contents {
+    color: seashell;    
+    font-size: 15px;
+}
+div.card-deck {
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
 }
 
