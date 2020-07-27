@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta http-equiv="refresh" content="1000">
+<meta http-equiv="refresh" content="100">
 
 <head>
   <meta charset="UTF-8">
@@ -32,14 +32,6 @@
         </form>
         <div class="card" id="search-history">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item" id="city-1">City1</li>
-            <li class="list-group-item" id="city-2">City2</li>
-            <li class="list-group-item" id="city-3">City3</li>
-            <li class="list-group-item" id="city-4">City4</li>
-            <li class="list-group-item" id="city-5">City5</li>
-            <li class="list-group-item" id="city-6">City6</li>
-            <li class="list-group-item" id="city-7">City7</li>
-            <li class="list-group-item" id="city-8">City8</li>
           </ul>
         </div>
       </div>
@@ -47,8 +39,8 @@
       <div class="col-9 col-right">
         <div class="card" id="top-card">
           <div class="card-body" id="top-card-body">
-            <h5 class="card-title" id="top-card-title"><span id="city-name"></span><span id="city-date"></span><span
-                id="city-icon"></span>Special title treatment</h5>
+            <h5 class="card-title" id="top-card-title"><span id="city-name"></span><span id="city-date"></span><img src=""
+                id="city-icon-0"/></h5>
             <h5 class="card-title card-text" id="card-subtext">Temperature : <span class="top-card-temperature"
                 id="card-temp-0"></span><span>&#176;</span>F</h5>
             <h5 class="card-title card-text" id="card-subtext">Humidity : <span class="top-card-humidity"
@@ -66,9 +58,9 @@
 
           <div class="card-deck">
             <div class="card bg-primary" id="card-contents">
-              <div class="card-header card-text-head" id="card-forecast-date-1">Header</div>
+              <div class="card-header card-text-head" id="city-date-1"></div>
               <div class="card-body text-center">
-                <i class="fa fa-cloud"><span id="forcast-icon-1"></span></i>
+                <img src="" id="city-icon-1"/>
                 <h5 class="card-title temp" id="bottom-card-text">Temp : <span
                     id="card-temp-1"></span><span>&#176;</span>F</h5>
                 <h5 class="card-title" id="bottom-card-text">Humidity : <span id="card-humidity-1"></span></h5>
@@ -76,9 +68,9 @@
             </div>
 
             <div class="card bg-primary" id="card-contents">
-              <div class="card-header card-text-head" id="card-forecast-date-1">Header</div>
+              <div class="card-header card-text-head" id="city-date-2"></div>
               <div class="card-body text-center">
-                <i class="fa fa-cloud"><span id="forcast-icon-1"></span></i>
+                <img src="" id="city-icon-2"/>
                 <h5 class="card-title temp" id="bottom-card-text">Temp : <span
                     id="card-temp-2"></span><span>&#176;</span>F</h5>
                 <h5 class="card-title" id="bottom-card-text">Humidity : <span id="card-humidity-2"></span></h5>
@@ -86,9 +78,9 @@
             </div>
 
             <div class="card bg-primary" id="card-contents">
-              <div class="card-header card-text-head" id="card-forecast-date-1">Header</div>
+              <div class="card-header card-text-head" id="city-date-3"></div>
               <div class="card-body text-center">
-                <i class="fa fa-cloud"><span id="forcast-icon-1"></span></i>
+                <img src="" id="city-icon-3"/>
                 <h5 class="card-title temp" id="bottom-card-text">Temp : <span
                     id="card-temp-3"></span><span>&#176;</span>F</h5>
                 <h5 class="card-title" id="bottom-card-text">Humidity : <span id="card-humidity-3"></span></h5>
@@ -96,9 +88,9 @@
             </div>
 
             <div class="card bg-primary" id="card-contents">
-              <div class="card-header card-text-head" id="card-forecast-date-1">Header</div>
+              <div class="card-header card-text-head" id="city-date-4"></div>
               <div class="card-body text-center">
-                <i class="fa fa-cloud"><span id="forcast-icon-1"></span></i>
+                <img src="" id="city-icon-4"/>
                 <h5 class="card-title temp" id="bottom-card-text">Temp : <span
                     id="card-temp-4"></span><span>&#176;</span>F</h5>
                 <h5 class="card-title" id="bottom-card-text">Humidity : <span id="card-humidity-4"></span></h5>
@@ -106,9 +98,9 @@
             </div>
 
             <div class="card bg-primary" id="card-contents">
-              <div class="card-header card-text-head" id="card-forecast-date-1">Header</div>
+              <div class="card-header card-text-head" id="city-date-5"></div>
               <div class="card-body text-center">
-                <i class="fa fa-cloud"><span id="forcast-icon-1"></span></i>
+                <img src="" id="city-icon-5"/>
                 <h5 class="card-title temp" id="bottom-card-text">Temp : <span
                     id="card-temp-5"></span><span>&#176;</span>F</h5>
                 <h5 class="card-title" id="bottom-card-text">Humidity : <span id="card-humidity-5"></span></h5>
@@ -120,59 +112,240 @@
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
   <script type="text/javascript">
     // This is our API key
     var APIKey = "7ae0000de388b9c572a093a2d744bb68";
     //Click function that triggers API call to open weather
-    $('#left-search-button').click(function (e) {
+     $('#left-search-button').click(function (e) {
+       //var recentSearches = [];
+       //localStorage.setItem(citySearch, JSON.stringify(recentSearches));
       //Stops defauls page refresh
-      e.preventDefault()
+      e.preventDefault()     
       //Reads the present city
-      citySearch = ($('#left-search').val())
+      citySearch = ($('#left-search').val())      
       //Makes first API call
       $.ajax({
         'url': "https://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + '&&appid=' + APIKey + '&cnt=6'
-      }).then(function (response) {
-        //Mine to city Name
-        console.log(response)
-        cityName = response.city.name
+      }).then(function (response) {    
+        localStorage.setItem('city', citySearch)   
+
+      //Clears Local Storage only when there a successful API call
+      if (response.cod ='200') {
+        localStorage.clear('CityName');
+        localStorage.clear('TodayDate');
+      for (var i=0; i<6; i++){      
+         localStorage.clear(('CityUVIndex'+i)  )
+         localStorage.clear('Temperature'+i)
+         localStorage.clear(('Humidity'+i) + ' %')
+         localStorage.clear(('CityWindSpeed'+i) + ' MPH')
+         localStorage.clear('WeatherUrl-'+i)
+         localStorage.clear('Day-'+i,)
+        }
+      }
+        //Mine to city Name  and push to Local Storage       
+        cityName = response.city.name         
+        localStorage.setItem('CityName', cityName)       
+          
+        //Get City date using moment.js and save in Local Storage every 30 mins
+        function todayDate() {
+            todayDate = moment().format('L');  
+            localStorage.setItem('TodayDate', todayDate) 
+            var t = setTimeout(todayDate, 1800000); 
+        }   
+        todayDate() 
+        //Get City Longitude and Lattitudes and hold for UV calculation
         cityLatt = (response.city.coord.lat).toFixed(2)
         cityLong = (response.city.coord.lon).toFixed(2)
 
+        //Loop through city parameters from today to the forcast days
         for (var i=0; i<6; i++){
-        console.log((cityTemperature = response.list[i].main.temp))
+        dayDates = moment().add(i, 'days').format('L')
+        localStorage.setItem('Day-'+i, dayDates)
+        
+
+        //Get city weather Icon and save to Loca Storage
+        cityWeatherIcon = response.list[i].weather[0].icon 
+        weatherIconUrl =  "http://openweathermap.org/img/w/" + cityWeatherIcon + ".png";        
+        localStorage.setItem('WeatherUrl-'+i, weatherIconUrl)        
+
+        //Loop through City Temperature and save data in local storage
+        cityTemperature = response.list[i].main.temp
         cityTemperature = ((response.list[i].main.temp - 273.15) * 1.80 + 32).toFixed(2)
+        localStorage.setItem('Temperature'+i, cityTemperature)
+
+        //Loop through City Humidity and save data in local storage
         cityHumidity = (response.list[i].main.humidity)
+        localStorage.setItem('Humidity'+i, cityHumidity)
+
+        //Loop through City Wind Speed and save data in local storage
         cityWindSpeed = (response.list[i].wind.speed)
+        localStorage.setItem('CityWindSpeed'+i, cityWindSpeed)
+
+        //Loop through City Wind Direction and save data in local storage
         cityWindDirection = (response.list[i].wind.deg)
-        postTemperature = $('#card-temp-' + i).text(cityTemperature)
-        postHumidity = $('#card-humidity-' + i).text(cityHumidity + ' %')
-        postWindSpeed = $('#card-windspeed-' + i).text(cityWindSpeed + ' MPH')}
+        localStorage.setItem('CityWindDirection' + i, cityWindDirection)    
         
-        //console.log(cityName)
-        //console.log(cityLong)
-        //console.log(cityLatt)
-        
-        //console.log('Temperature in ' + cityName + ' is ' + cityTemperature)
-        //console.log('Humidity in ' + cityName + ' is ' + cityHumidity + '%')
-        //console.log('Wind Speed in ' + cityName + ' is ' + cityWindSpeed + ' MPH at ' + cityWindDirection)
-        //console.log(cityName + ' is on Longittude ' + cityLong + ' Lattitude ' + cityLatt)      
+      }
+
+        //Use Generated Longitude & Lattitude data to get City UV Index and save in Local Storage 
         $.ajax({
           'url': 'http://api.openweathermap.org/data/2.5/uvi/forecast?lat=' + cityLatt + '&lon=' + cityLong + '&appid=' + APIKey
         }).then(function (response) {
           if (cityLong && cityLatt)  {  
             for (var i=0; i<6; i++)   {  
-            cityUVIndex = response[i].value
-            console.log(cityUVIndex)
-            console.log('UV Index of ' + cityName + ' is ' + cityUVIndex)          
-          $('#card-uv-' + i).text(cityUVIndex)
-          console.log('card-uv-' + i)
+            cityUVIndex = response[i].value   
+            localStorage.setItem('CityUVIndex'+i, cityUVIndex)            
+            location.reload()
         }}})
-      })
-    })
+
+      }
+
+      )
+    });
+
+    $('#city-name').text(localStorage.getItem('CityName'));
+    $('#city-date').text(' ' +localStorage.getItem('TodayDate') + ' ');
+    for (var i=0; i<6; i++){      
+      $('#card-uv-' + i).text(localStorage.getItem('CityUVIndex'+i)  )
+      $('#card-temp-' + i).text(localStorage.getItem('Temperature'+i))
+      $('#card-humidity-' + i).text(localStorage.getItem('Humidity'+i) + ' %')
+      $('#card-windspeed-' + i).text(localStorage.getItem('CityWindSpeed'+i) + ' MPH')
+      $('#city-icon-'+i).attr('src', localStorage.getItem('WeatherUrl-'+i))
+      $('#city-date-'+i).text(localStorage.getItem('Day-'+i,))
+    }
+
+    //Append City Names to searched Items
+    for (var i=0; i<10; i++){
+      $('.list-group').append('<li>'+(localStorage.getItem('city-'+i))+'</li>')      
+    }
+    
 
   </script>
+
+<!--Styling Section-->
+  <style>
+    .jumbotron {
+    padding: 0.3rem;
+    margin-bottom: 0px;
+}
+
+#title {
+    font-size: 55px;
+}
+
+.main-container {
+    max-width: 100%;
+    margin: 0px;
+}
+
+.main-row {
+    height: 87vh;
+    padding-bottom: 0px;    
+}
+
+.col-left {
+    background-color: rgb(219, 217, 217);    
+}
+
+.col-right {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+#top-card {
+    margin-right: 0px !important;
+    padding-right: 0px;
+    height: 50%;
+}
+.forecast{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#forcast-card {
+    margin-right: 4%;
+}
+.card-title-format {
+    font-size: 15px;
+}
+.card-body {
+    padding-left: 3px;
+}
+
+.card-text {
+    margin-left: 30px;
+    margin-bottom: 15px;
+}
+
+#top-card-title {
+    margin-left: 30px;
+    font-size: 45px;
+    font-weight: bolder;
+}
+
+#left-search {
+    width: 80%;
+    height: 50px !important;
+    border-color: darkblue;
+}
+#left-search-button {
+    border-color: darkblue;
+    color: black;
+    height: 50px !important;
+    background-color: #4D77B8;
+}
+
+#search-history {
+    margin-top: 50px;
+}
+#search-area {
+    margin-top: 8px;
+}
+.fa-search {
+    color: cornsilk;
+}
+
+/*--Bottom card styling --*/
+#bottom-card-text {
+    padding-left: 4px !important;
+    text-align: left !important;
+    font-size: 18px;
+}
+#weather-icon {
+    margin-bottom: 50px !important;
+    padding-bottom: 50px !important;
+}
+.temp {
+    margin-top: 15px;
+}
+#card-forecast-date-1 {
+    font-weight: bolder;
+    text-align: center;
+}
+div.card-deck,
+#card-contents {
+    color: seashell;    
+    font-size: 15px;
+}
+div.card-deck {
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+}
+.card-text-head {
+  font-size: 22px;
+}
+#city-icon-0,
+#city-icon-1,
+#city-icon-2,
+#city-icon-3,
+#city-icon-4,
+#city-icon-5 {
+  width: 80px;
+}
+  </style>
 
 
 </body>
