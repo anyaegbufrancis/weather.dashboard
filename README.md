@@ -1,8 +1,9 @@
-# 06 Server-Side APIs: Weather Dashboard
+# BRIEF DISCRIPTION
 
-Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+This project is a weather dashboard and useful for business travellers for quick update on the weather status.OpenWeather API (https://openweathermap.org/api) is used retrieve weather data for cities. Moment.js is used to grab the date of the location and local storage is used as temporary data storage.
 
-Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use `localStorage` to store any persistent data.
+Data retrieved from the API is sanitized and dynamically updated on the HTML page. This presents a user with a fluid and smooth interface for quick weather update.
+
 
 ## User Story
 
@@ -30,17 +31,26 @@ WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
 ```
 
-The following image demonstrates the application functionality:
 
-![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
+## APPROACH
 
-## Review
+The approach adopted is as follows:
 
-You are required to submit the following for review:
+1. A pseudocode was developed in a rough sketch, itemizing the concepts, fuctions, the variables and how they will beconsumed.
+2. The base HTML pages are coded.
+3. Basic styling was applied to differentiate the codes.
+4. API targets and frameworks were identified and applied
+5. Tags are applied to each object/element that needs to be targeted to achieve a particular feature.
+6. Each base function was coded using Javascript and JQUERY maily.
+7. Error checking and fail conditions are checked in the logic and bugs fixed.
+8. Naming, Tagging and references are updated to reflect updated logic.
+9. Final polishing was applied using CSS.
+10. Code was refactored and restested.
+11. Few more features were added and old features are optimized.
+12. Final code was uploaded to github
 
-* The URL of the deployed application.
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+## GENERAL DESCRIPTION
 
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+The finished project is present in a single index.html page mad up of html, styling and javascript sections. Local Storage was employed as placeholder for values in this project.
+
