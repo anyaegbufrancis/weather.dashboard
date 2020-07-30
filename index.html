@@ -4,11 +4,12 @@
 
 <head>
   <meta charset="UTF-8">
+  <!--Fontawesome CDN -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--JQuery CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--Bootstrap CDN -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
-  <script src="scripts.js" defer></script>
   <title>Weather Dashboard</title>
 </head>
 <!--HTML Body containing all elements-->
@@ -27,12 +28,10 @@
           <h4 class="text-center">Search for a City:</h4>
           <input class="form-control mr-sm-2" type="search" placeholder="Search for a city" aria-label="Search"
             id="left-search">
-          <button class="btn btn-outline-success my-2 my-sm-0 btn-lg" type="submit" id="left-search-button"><i
-              class="fa fa-search" aria-hidden="true"></i></button>
+          <div class="search-history"><button class="btn btn-outline-success my-2 my-sm-0 btn-lg left-search-button search-window" type="submit" id="left-search-button"><i
+            class="fa fa-search" aria-hidden="true"></i></button></div>
         </form>
-        <div class="card" id="search-history">
-          <ul class="list-group list-group-flush">
-          </ul>
+        <div class="search-history" id="search-history">
         </div>
       </div>
 
@@ -118,117 +117,171 @@
     // This is our API key
     var APIKey = "7ae0000de388b9c572a093a2d744bb68";
     //Click function that triggers API call to open weather
-     $('#left-search-button').click(function (e) {
-       //var recentSearches = [];
-       //localStorage.setItem(citySearch, JSON.stringify(recentSearches));
+
+    
+//$('#left-search-button, .searcher').click(function (e) {
+  //    console.log($(this))
+$('.search-history').on('click', '#left-search-button', function(e){
+  
       //Stops defauls page refresh
       e.preventDefault()     
-      //Reads the present city
-      citySearch = ($('#left-search').val())      
+
+      //Reads the present city from either historical search or new search area
+      if ($('#left-search').val()) {
+      citySearch = ($('#left-search').val())
+      console.log(citySearch)
+      }
+      else {
+        citySearch = $(this).text()
+        console.log(citySearch)
+      }      
+
       //Makes first API call
       $.ajax({
         'url': "https://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + '&&appid=' + APIKey + '&cnt=6'
-      }).then(function (response) {    
-        localStorage.setItem('city', citySearch)   
-
-      //Clears Local Storage only when there a successful API call
+      }).then(function (response) {
+      
+      //Remove rlevant data from Local Storage only when there a successful API call
       if (response.cod ='200') {
-        localStorage.clear('CityName');
-        localStorage.clear('TodayDate');
-      for (var i=0; i<6; i++){      
-         localStorage.clear(('CityUVIndex'+i)  )
-         localStorage.clear('Temperature'+i)
-         localStorage.clear(('Humidity'+i) + ' %')
-         localStorage.clear(('CityWindSpeed'+i) + ' MPH')
-         localStorage.clear('WeatherUrl-'+i)
-         localStorage.clear('Day-'+i,)
-        }
-      }
+        localStorage.removeItem('CityName');
+        localStorage.removeItem('TodayDate');
+          for (var i=0; i<6; i++){      
+            localStorage.removeItem(('CityUVIndex'+i)  );
+            localStorage.removeItem('Temperature'+i);
+            localStorage.removeItem(('Humidity'+i) + ' %');
+            localStorage.removeItem(('CityWindSpeed'+i) + ' MPH');
+            localStorage.removeItem('WeatherUrl-'+i);
+            localStorage.removeItem('Day-'+i,);
+            };
+         };       
+    
         //Mine to city Name  and push to Local Storage       
-        cityName = response.city.name         
-        localStorage.setItem('CityName', cityName)       
+        cityName = response.city.name;         
+        localStorage.setItem('CityName', cityName);   
+
+        //Reads the present searched city name, converts it to upper case
+        thisCity = localStorage.getItem('CityName');
+        thisCity = thisCity.toUpperCase();
+
+        //Creates an empty array and add this city
+        var presentSearchedCity = new Array();
+        presentSearchedCity.push(thisCity);
+        console.log(presentSearchedCity);
+
+        //Reads last searched cities from Local Storage and join it to present searched city array
+        citySearchHistory = JSON.parse(localStorage.getItem('Search History') || '[]');
+
+        //Sanitize the array by removing higher index duplicates & save only last 10 Cities
+        sanitizedCityArray = ([...new Set(presentSearchedCity.concat(citySearchHistory))]);
+        sanitizedCityArray = sanitizedCityArray.slice(0, 7)
+
+        //Save the sanotized array to local storag for future reference
+        localStorage.setItem('Search History', JSON.stringify(sanitizedCityArray));
           
         //Get City date using moment.js and save in Local Storage every 30 mins
         function todayDate() {
             todayDate = moment().format('L');  
-            localStorage.setItem('TodayDate', todayDate) 
+            localStorage.setItem('TodayDate', todayDate) ;
             var t = setTimeout(todayDate, 1800000); 
         }   
-        todayDate() 
+        todayDate();
+
         //Get City Longitude and Lattitudes and hold for UV calculation
-        cityLatt = (response.city.coord.lat).toFixed(2)
-        cityLong = (response.city.coord.lon).toFixed(2)
+        cityLatt = (response.city.coord.lat).toFixed(2);
+        cityLong = (response.city.coord.lon).toFixed(2);
 
         //Loop through city parameters from today to the forcast days
         for (var i=0; i<6; i++){
-        dayDates = moment().add(i, 'days').format('L')
-        localStorage.setItem('Day-'+i, dayDates)
-        
+        dayDates = moment().add(i, 'days').format('L');
+        localStorage.setItem('Day-'+i, dayDates);        
 
         //Get city weather Icon and save to Loca Storage
-        cityWeatherIcon = response.list[i].weather[0].icon 
+        cityWeatherIcon = response.list[i].weather[0].icon ;
         weatherIconUrl =  "http://openweathermap.org/img/w/" + cityWeatherIcon + ".png";        
-        localStorage.setItem('WeatherUrl-'+i, weatherIconUrl)        
+        localStorage.setItem('WeatherUrl-'+i, weatherIconUrl)  ;      
 
         //Loop through City Temperature and save data in local storage
-        cityTemperature = response.list[i].main.temp
-        cityTemperature = ((response.list[i].main.temp - 273.15) * 1.80 + 32).toFixed(2)
-        localStorage.setItem('Temperature'+i, cityTemperature)
+        cityTemperature = response.list[i].main.temp ;
+        cityTemperature = ((response.list[i].main.temp - 273.15) * 1.80 + 32).toFixed(2);
+        localStorage.setItem('Temperature'+i, cityTemperature);
 
         //Loop through City Humidity and save data in local storage
-        cityHumidity = (response.list[i].main.humidity)
-        localStorage.setItem('Humidity'+i, cityHumidity)
+        cityHumidity = (response.list[i].main.humidity);
+        localStorage.setItem('Humidity'+i, cityHumidity);
 
         //Loop through City Wind Speed and save data in local storage
-        cityWindSpeed = (response.list[i].wind.speed)
-        localStorage.setItem('CityWindSpeed'+i, cityWindSpeed)
+        cityWindSpeed = (response.list[i].wind.speed);
+        localStorage.setItem('CityWindSpeed'+i, cityWindSpeed);
 
         //Loop through City Wind Direction and save data in local storage
-        cityWindDirection = (response.list[i].wind.deg)
-        localStorage.setItem('CityWindDirection' + i, cityWindDirection)    
-        
+        cityWindDirection = (response.list[i].wind.deg);
+        localStorage.setItem('CityWindDirection' + i, cityWindDirection);        
       }
 
-        //Use Generated Longitude & Lattitude data to get City UV Index and save in Local Storage 
-        $.ajax({
-          'url': 'http://api.openweathermap.org/data/2.5/uvi/forecast?lat=' + cityLatt + '&lon=' + cityLong + '&appid=' + APIKey
-        }).then(function (response) {
-          if (cityLong && cityLatt)  {  
-            for (var i=0; i<6; i++)   {  
-            cityUVIndex = response[i].value   
-            localStorage.setItem('CityUVIndex'+i, cityUVIndex)            
-            location.reload()
-        }}})
-
-      }
-
-      )
+      //Use Generated Longitude & Lattitude data to get City UV Index and save in Local Storage 
+      $.ajax({
+        'url': 'http://api.openweathermap.org/data/2.5/uvi/forecast?lat=' + cityLatt + '&lon=' + cityLong + '&appid=' + APIKey
+      }).then(function (response) {
+        if (cityLong && cityLatt)  {  
+          for (var i=0; i<6; i++)   {  
+          cityUVIndex = response[i].value   ;
+          localStorage.setItem('CityUVIndex'+i, cityUVIndex)     ;       
+          location.reload();
+      }}});
+      });
     });
-
+    //Reads values from local storage, formats them when applicable and displays them on the HTML page
     $('#city-name').text(localStorage.getItem('CityName'));
     $('#city-date').text(' ' +localStorage.getItem('TodayDate') + ' ');
-    for (var i=0; i<6; i++){      
-      $('#card-uv-' + i).text(localStorage.getItem('CityUVIndex'+i)  )
-      $('#card-temp-' + i).text(localStorage.getItem('Temperature'+i))
-      $('#card-humidity-' + i).text(localStorage.getItem('Humidity'+i) + ' %')
-      $('#card-windspeed-' + i).text(localStorage.getItem('CityWindSpeed'+i) + ' MPH')
-      $('#city-icon-'+i).attr('src', localStorage.getItem('WeatherUrl-'+i))
-      $('#city-date-'+i).text(localStorage.getItem('Day-'+i,))
+    //Loops through to post saved data
+    for (var i=0; i<6; i++){
+      $('#card-temp-' + i).text(localStorage.getItem('Temperature'+i));
+      $('#card-humidity-' + i).text(localStorage.getItem('Humidity'+i) + ' %');
+      $('#card-windspeed-' + i).text(localStorage.getItem('CityWindSpeed'+i) + ' MPH');
+      $('#city-icon-'+i).attr('src', localStorage.getItem('WeatherUrl-'+i));
+      $('#city-date-'+i).text(localStorage.getItem('Day-'+i,));
+
+      //UV Light color coding. Needed only for index 0
+      searchedCityUV = (localStorage.getItem('CityUVIndex0'));
+      if (searchedCityUV<3) {       
+      $('#card-uv-' + i).text(searchedCityUV);
+      $('#card-uv-' + i).css({'background-color': '#39C625', 'font-size': '1.1em', 'font-weight': 'bold', 'border-radius': '20%'})
+      }
+      if (3<searchedCityUV && searchedCityUV<6) {          
+      $('#card-uv-' + i).text(searchedCityUV);
+      $('#card-uv-' + i).css({'background-color': '#F9F504', 'font-size': '1.1em', 'font-weight': 'bold', 'border-radius': '20%'})
+      }
+      if (6<searchedCityUV && searchedCityUV<8) {         
+      $('#card-uv-' + i).text(searchedCityUV);
+      $('#card-uv-' + i).css({'background-color': '#F19910', 'font-size': '1.1em', 'font-weight': 'bold', 'border-radius': '20%'})
+      }
+      if (8<searchedCityUV && searchedCityUV<11) {         
+      $('#card-uv-' + i).text(searchedCityUV);
+      $('#card-uv-' + i).css({'background-color': '#F14010', 'font-size': '1.1em', 'font-weight': 'bold', 'border-radius': '20%'})
+      }
+      if (searchedCityUV>11.00) {            
+      $('#card-uv-' + i).text(searchedCityUV);
+      $('#card-uv-' + i).css({'background-color': '#BB10F1', 'font-size': '1.1em', 'font-weight': 'bold', 'border-radius': '20%'})
+      }
     }
 
-    //Append City Names to searched Items
-    for (var i=0; i<10; i++){
-      $('.list-group').append('<li>'+(localStorage.getItem('city-'+i))+'</li>')      
-    }
-    
+    //Function that inserts formatted button for historical search
+    function updateSearchHistory() {
+    searchedBefore = JSON.parse(localStorage.getItem('Search History'));
+        $('#search-history').append('<button type="button" class="btn btn-primary btn-lg" style="width: 100%; height: 50px; font-weight: bolder; font-size: 25px;">Search History</button>');
+          for (var i = 0; i < searchedBefore.length; i++) {         
+        $('#search-history').append('<button type="submit" class="btn btn-secondary btn-lg searcher"  id="left-search-button" style="width: 100%; height: 50px; margin-top: 2px" >' + searchedBefore[i] + '</button>');
+        } 
+}
+updateSearchHistory()   
 
   </script>
 
 <!--Styling Section-->
-  <style>
-    .jumbotron {
-    padding: 0.3rem;
-    margin-bottom: 0px;
+<style>
+.jumbotron {
+padding: 0.3rem;
+margin-bottom: 0px;
 }
 
 #title {
@@ -241,7 +294,7 @@
 }
 
 .main-row {
-    height: 87vh;
+    height: 70vh;
     padding-bottom: 0px;    
 }
 
@@ -291,11 +344,14 @@
     height: 50px !important;
     border-color: darkblue;
 }
-#left-search-button {
+.left-search-button {
     border-color: darkblue;
     color: black;
     height: 50px !important;
     background-color: #4D77B8;
+}
+.searcher:hover {
+  background-color: green;
 }
 
 #search-history {
@@ -329,6 +385,7 @@ div.card-deck,
 #card-contents {
     color: seashell;    
     font-size: 15px;
+    max-height: 20em;
 }
 div.card-deck {
     padding-bottom: 0px !important;
@@ -343,7 +400,44 @@ div.card-deck {
 #city-icon-3,
 #city-icon-4,
 #city-icon-5 {
-  width: 80px;
+  width: 60px;
+}
+
+@media only screen and (min-width: 767px) {
+  #top-card {
+    height: 32%;
+  }
+  #bottom-card-text {
+    padding-left: 0px !important;
+    font-size: 13px;    
+}
+.card-text-head {
+  font-size: 14px !important;
+  font-weight: bold;
+}
+#card-contents {
+  margin-left: 2px;
+}
+}
+@media only screen and (min-width: 1024px) {
+  #top-card {
+    height: 42%;  
+  }
+  #top-card-body {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+#top-card-title {
+  font-size: 30px;
+  margin-bottom: 1px !important; 
+}
+.forecast {
+  font-size: 24px;  
+}
+#bottom-card-text {
+    margin-top: 1px;   
+}
 }
   </style>
 
