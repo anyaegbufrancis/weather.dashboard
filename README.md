@@ -32,15 +32,16 @@ THEN I am presented with the last searched city forecast
 ```
 # Project Landing Page
 
-![Project Landing](./StartPage.jpg)
+
+<img src="./StartPage.png" alt="alt Project Main Page" width="1200px" height="600px">
 
 # Project Weather Page
 
-![Project Main Page](./MainPage.jpg)
+<img src="./MainPage.png" alt="alt Project Main Page" width="1200px" height="600px">
 
 # Link To Project:
 
-https://anyaegbufrancis.github.io/weather.dashboard/
+Please click [here](https://anyaegbufrancis.github.io/weather.dashboard/) to view the github hosted project.
 
 
 ## APPROACH
