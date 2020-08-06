@@ -34,11 +34,13 @@ THEN I am presented with the last searched city forecast
 
 
 
-<img src="./StartPage.png" width="900px" height="500px"/>
+<img src="./StartPage.png" alt="MainPage" style={"width:900px"; "height:500px"/>
 
 # Project Weather Page
 
 <img src="./MainPage.png" alt="alt Project Main Page" width="1200px" height="600px"/>
+
+<img src="./StartPage.png" alt="Screenshot" style="max-width:100%;">
 
 # Link To Project:
 
