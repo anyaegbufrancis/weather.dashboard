@@ -40,7 +40,7 @@ THEN I am presented with the last searched city forecast
 
 <img src="./MainPage.png" alt="alt Project Main Page" width="1200px" height="600px"/>
 
-<img src="StartPage.png" alt="Screenshot" style="max-width:100%;">
+<img alt="MainPage" src="./MainPage.png" height="900" width="500" align="right">
 
 # Link To Project:
 
