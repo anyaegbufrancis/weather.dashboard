@@ -30,6 +30,17 @@ THEN I am again presented with current and future conditions for that city
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
 ```
+# Project Landing Page
+
+![Project Landing](./StartPage.jpg)
+
+# Project Weather Page
+
+![Project Main Page](./MainPage.jpg)
+
+# Link To Project:
+
+https://anyaegbufrancis.github.io/weather.dashboard/
 
 
 ## APPROACH
@@ -55,14 +66,3 @@ The approach adopted is as follows:
 The finished project is present in a single index.html page mad up of html, styling and javascript sections. Local Storage was employed as placeholder for values in this project.
 
 
-# Project Landing Page
-
-[GitHub Logo](./StartPage.jpg)
-
-# Project Weather Page
-
-[GitHub Logo](./MainPage.jpg)
-
-# Link To Project:
-
-https://anyaegbufrancis.github.io/weather.dashboard/
