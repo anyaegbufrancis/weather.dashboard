@@ -33,11 +33,12 @@ THEN I am presented with the last searched city forecast
 # Project Landing Page
 
 
-<img src="./StartPage.png" alt="alt Project Main Page" width="1200px" height="600px">
+
+<img src="./StartPage.png" alt="alt Project Main Page" width="1200px" height="600px"/>
 
 # Project Weather Page
 
-<img src="./MainPage.png" alt="alt Project Main Page" width="1200px" height="600px">
+<img src="./MainPage.png" alt="alt Project Main Page" width="1200px" height="600px"/>
 
 # Link To Project:
 
