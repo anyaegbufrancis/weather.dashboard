@@ -54,3 +54,15 @@ The approach adopted is as follows:
 
 The finished project is present in a single index.html page mad up of html, styling and javascript sections. Local Storage was employed as placeholder for values in this project.
 
+
+# Project Landing Page
+
+[GitHub Logo](./StartPage.jpg)
+
+# Project Weather Page
+
+[GitHub Logo](./MainPage.jpg)
+
+# Link To Project:
+
+https://anyaegbufrancis.github.io/weather.dashboard/
