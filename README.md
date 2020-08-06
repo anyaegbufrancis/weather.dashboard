@@ -34,7 +34,7 @@ THEN I am presented with the last searched city forecast
 
 
 
-<img src="./StartPage.png" alt="alt Project Main Page" width="1200px" height="600px"/>
+<img src="./StartPage.png" width="1200px" height="600px"/>
 
 # Project Weather Page
 
