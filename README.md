@@ -34,6 +34,7 @@ THEN I am presented with the last searched city forecast
 
 
 
+
 <img src="./StartPage.png"/>
 
 # Project Weather Page
@@ -44,6 +45,9 @@ THEN I am presented with the last searched city forecast
 
 Please click [here](https://anyaegbufrancis.github.io/weather.dashboard/) to view the github hosted project.
 
+# Link To GIT Repo:
+
+Please click [here](https://github.com/anyaegbufrancis/weather.dashboard/) for project repositories.
 
 ## APPROACH
 
